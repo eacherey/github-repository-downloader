@@ -1,6 +1,5 @@
 use crate::cli::TargetType;
 use anyhow::{Result, bail};
-use reqwest;
 use reqwest::header::USER_AGENT;
 use serde::Deserialize;
 
@@ -49,7 +48,7 @@ pub fn fetch_repos(
 
         all_repos.extend(repos);
 
-        if (count < 100) {
+        if count < 100 {
             break;
         }
 
