@@ -49,3 +49,9 @@ pub enum Command {
         token: String,
     },
 }
+
+#[derive(Debug, Clone)]
+pub enum TargetType {
+    User,
+    Org,
+}
