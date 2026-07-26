@@ -1,9 +1,11 @@
 mod cli;
 mod config;
+mod github;
 
 use crate::{
     cli::{Cli, Command, TargetType},
     config::{load_token, save_token},
+    github::fetch_repos,
 };
 use anyhow::Result;
 use clap::Parser;
@@ -49,6 +51,8 @@ fn handle_download(
     } else {
         println!("No authorization found, limits apply (60 req/h)");
     }
+
+    let all_repos = fetch_repos(target_type, name, &gh_token);
 
     Ok(())
 }
